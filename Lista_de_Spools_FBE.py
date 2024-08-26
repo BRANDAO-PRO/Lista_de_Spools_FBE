@@ -45,3 +45,4 @@ else:
                                               (df_Lista_de_Spools_FBE['Localização'] == localizacao_filtro), 
                                               colunas_selecionadas]
     st.dataframe(df_filtrado, height=1000)
+    st.sidebar.text('Powered By Brandão')
