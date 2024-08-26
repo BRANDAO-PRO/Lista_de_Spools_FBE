@@ -6,8 +6,15 @@ import pandas as pd
 def formatar_porcentagem(val):
     return f"{val * 100:.2f}%"
 
-pasta_FBE = Path(__file__).parent.parent / 'FBE'
-df_Lista_de_Spools_FBE = pd.read_excel(pasta_FBE / 'Lista_de_Spools_FBE.xlsx')
+# Atualizando o caminho para o arquivo
+pasta_FBE = Path('C:/Users/tiago.francisco/Desktop/FBE/Lista_de_Spools_FBE')
+
+# Adicionando um try-except para lidar com erros de arquivo não encontrado
+try:
+    df_Lista_de_Spools_FBE = pd.read_excel(pasta_FBE / 'Lista_de_Spools_FBE.xlsx')
+except FileNotFoundError:
+    st.error("Arquivo 'Lista_de_Spools_FBE.xlsx' não encontrado no diretório especificado.")
+    st.stop()
 
 # Formatar as colunas de porcentagem
 colunas_para_formatar = ['% no EBR/ID', '% Teste/ID', '% Lavagem/ID']
